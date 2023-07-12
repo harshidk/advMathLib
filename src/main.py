@@ -72,3 +72,35 @@ class Matrices():
     
         except ZeroDivisionError:
             print("The determinant of the array is 0, thus there is no inverse")
+
+        except IndexError:
+            print('Matrix does not have equal number of rows and columns thus there is no inverse')
+
+    def multiplyMatrixConstant(m, n):
+        '''This function takes in array m and constant n and multiplies them together'''
+        for r in range(len(m)):
+            for c in range(len(m[0])):
+                m[r][c] = m[r][c]*n 
+
+        return m
+
+    def multiplyMatrices(m, n):
+        '''This function takes in two arrays, m and n, and returns m*n'''
+        if len(m[0]) != len(n):
+            raise ValueError("Invalid matrix dimensions")
+        result = [[0 for x in range(len(n[0]))] for y in range(len(m))]
+        for i in range(len(m)):
+            for j in range(len(n[0])):
+                for k in range(len(n)):
+                    result[i][j] += m[i][k] * n[k][j]
+        return result
+
+    def divideMatrices(m, n):
+        '''This funcion takes in two matrices m and n and returns m/n'''
+        try:
+            n = Matrices.getMatrixInverse(n)
+            return Matrices.multiplyMatrices(m, n)
+        except IndexError:
+            print('Matrix n must have equal number of rows and columns to get an inverse')
+        except TypeError:
+            print('^')
