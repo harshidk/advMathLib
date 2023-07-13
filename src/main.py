@@ -104,3 +104,29 @@ class Matrices():
             print('Matrix n must have equal number of rows and columns to get an inverse')
         except TypeError:
             print('^')
+
+    def checkSingularMatrix(m):
+        '''This function takes in array m and checks if it is a singular matrix, returns True or False'''
+        if len(m)==len(m[0]):
+            if Matrices.getMatrixDeternminant(m) == 0:
+                return True
+            else:
+                return False
+        else:
+            return False
+    
+    def checkIndentityMatrix(m):
+        '''This function takes in array m and checks if it is an identity matrix, returns True or False'''
+        i = 1
+        matrix = [[0 for x in range(len(m[0]))] for y in range(len(m))]
+        for r in range(len(matrix)):
+            for c in range(len(m[0])):
+                matrix[r][c] = i
+                i += 1
+        if len(m)==len(m[0]):
+            if matrix == Matrices.multiplyMatrices(matrix, m):
+                return True
+            else:
+                return False
+        else:
+            return False
