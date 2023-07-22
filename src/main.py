@@ -130,3 +130,26 @@ class Matrices():
                 return False
         else:
             return False
+        
+    def checkSquareMatrix(m):
+        '''This function takes in array m and checks if its a square matrix, returns True or False'''
+        count = 0
+        for i in range(len(m)):
+            if len(m) == len(m[i]):
+                count += 1
+        if count == len(m):
+            return True
+        else:
+            return False
+        
+class Vectors:
+
+    def dotProduct(m, n):
+        '''This function takes in two vectors, m and n, and returns the dot product of those vectors'''
+        dot_product = 0
+        if len(m) == len(n):
+            for i in range(len(m)):
+                dot_product += m[i]*n[i]
+            return dot_product
+        else:
+            return ValueError
