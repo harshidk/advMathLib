@@ -1,3 +1,5 @@
+import math
+
 class Random():
 
     def psuedo_random(seed, N=1, a=0, b=10, integer = True):
@@ -153,3 +155,17 @@ class Vectors:
             return dot_product
         else:
             return ValueError
+    
+    def getMagnitude(m):
+        terms = 0
+        for i in range(len(m)):
+            terms = terms + (m[i])^2
+        mag = math.sqrt(terms)
+        return mag
+
+    def angleBetweenVectors(m, n):
+        dot = Vectors.dotProduct(m, n)
+        mag_m = m.getMagnitude(m)
+        mag_n = m.getMagnitude(n)
+        angle = math.acos((dot)/(mag_m*mag_n))
+        return angle      
